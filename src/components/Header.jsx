@@ -1,6 +1,6 @@
 function Header() {
-    return (<div>
-        <nav class="main-nav">
+    return (
+      <nav class="main-nav">
       <a class="main-nav-logo" href="./index.html">
         <img
           class="main-nav-logo-image"
@@ -15,7 +15,6 @@ function Header() {
           Sign In
         </a>
       </div>
-    </nav>
-    </div>);
+    </nav>);
 }
 export default Header
