@@ -1,4 +1,4 @@
 function Error() {
-    return (<div></div>);
+    return (<div>404 error</div>);
 }
 export default Error
