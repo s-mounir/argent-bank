@@ -16,6 +16,7 @@ function Profil() {
     });
 
     useEffect(() => {
+        console.log(data)
         if (data) dispatch(setCredentials(data))
     }, [data, dispatch])
 

@@ -21,7 +21,7 @@ root.render(
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/sign-in" element={<Connexion />} />
+          <Route path="/login" element={<Connexion />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/profil" element={<Profil />} />
           </Route>

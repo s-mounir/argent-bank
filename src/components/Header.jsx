@@ -1,12 +1,13 @@
 import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
 import { logout } from '../utils/authSlice';
 
 function Header() {
   const { userInfo } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
-  console.log('HEADER : ', userInfo)
 
   return (
     <nav className="main-nav">
@@ -20,12 +21,12 @@ function Header() {
       </NavLink>
       <div>
         {userInfo ? (
-          <NavLink to="./sign-in" className="main-nav-item" onClick={() => dispatch(logout())}>
-          <i className="fa fa-user-circle"></i>
-          Sign Out
-        </NavLink>
+          <NavLink to="./" className="main-nav-item" onClick={() => dispatch(logout())}>
+            <FontAwesomeIcon icon={faRightFromBracket} />
+            Sign Out
+          </NavLink>
         ) : (
-          <NavLink to="./sign-in" className="main-nav-item">
+          <NavLink to="./login" className="main-nav-item">
             <i className="fa fa-user-circle"></i>
             Sign In
           </NavLink>

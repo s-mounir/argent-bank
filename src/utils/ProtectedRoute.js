@@ -2,15 +2,15 @@ import { useSelector } from "react-redux";
 import { NavLink, Outlet } from "react-router-dom";
 
 const ProtectedRoute = () => {
-    const { userInfo } = useSelector((state) => state.auth)
-
+    const { userToken } = useSelector((state) => state.auth)
+    console.log(userToken)
     //show unauthorized screen if no user is found in redux store
-    if (!userInfo) {
+    if (!userToken) {
         return (
             <div>
                 <h1>Vous n'etes pas connectés : 
                     <span>
-                        <NavLink to='/sign-in'>Se connecter</NavLink>
+                        <NavLink to='/login'>Se connecter</NavLink>
                     </span>
                 </h1>
             </div>
