@@ -6,7 +6,7 @@ import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { logout } from '../utils/authSlice';
 
 function Header() {
-  const { userInfo } = useSelector((state) => state.auth)
+  const { userFirstName, userLastName } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
   return (
@@ -20,7 +20,7 @@ function Header() {
         <h1 className="sr-only">Argent Bank</h1>
       </NavLink>
       <div>
-        {userInfo ? (
+        {userFirstName ? (
           <NavLink to="./" className="main-nav-item" onClick={() => dispatch(logout())}>
             <FontAwesomeIcon icon={faRightFromBracket} />
             Sign Out

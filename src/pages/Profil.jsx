@@ -4,9 +4,10 @@ import { useEffect } from 'react';
 import Accounts from '../components/Accounts';
 import { useGetUserDetailsQuery } from '../utils/authService';
 import { setCredentials } from '../utils/authSlice';
+import EditName from '../components/EditName';
 
 function Profil() {
-    const { userInfo } = useSelector((state) => state.auth)
+    const { userFirstName, userLastName } = useSelector((state) => state.auth)
     const dispatch = useDispatch()
 
     // automatically authenticate user if token is found
@@ -16,14 +17,12 @@ function Profil() {
     });
 
     useEffect(() => {
-        console.log(data)
         if (data) dispatch(setCredentials(data))
     }, [data, dispatch])
 
     return (<main className="main bg-dark">
         <div className="header">
-            <h1>Welcome back<br /> {userInfo?.firstName} {userInfo?.lastName}</h1>
-            <button className="edit-button">Edit Name</button>
+            <EditName />
         </div>
         <h2 className="sr-only">Accounts</h2>
         <Accounts accountTitle={"Checking"} accountNumber={"x8349"} accountAmount={"$2,082.79"} />

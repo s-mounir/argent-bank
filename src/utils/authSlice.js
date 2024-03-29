@@ -7,7 +7,8 @@ const userToken = localStorage.getItem('userToken')
 
 const initialState = {
     loading: false,
-    userInfo: null,
+    userFirstName: null,
+    userLastName: null,
     userToken: userToken,
     error: null,
     success: false,
@@ -20,13 +21,19 @@ const authSlice = createSlice({
         logout : (state) => {
             localStorage.removeItem('userToken') //deletes token from storage
             state.loading = false
-            state.userInfo = null
+            state.userFirstName = null
+            state.userLastName = null
             state.userToken = null
             state.error = null
             state.success = false
         },
         setCredentials: (state, {payload}) => {
-            state.userInfo = payload.body
+            state.userFirstName = payload.body.firstName
+            state.userLastName = payload.body.lastName
+        },
+        updateCredentials: (state, {payload}) => {
+            state.userFirstName = payload.body.firstName
+            state.userLastName = payload.body.lastName
         }
     },
     extraReducers: (builder) => {
@@ -37,7 +44,6 @@ const authSlice = createSlice({
             })
             .addCase(userLogin.fulfilled, (state, {payload}) => {
                 state.loading = false
-                state.userInfo = payload
                 state.userToken = payload.body.token
                 state.success = true
             })
@@ -48,5 +54,5 @@ const authSlice = createSlice({
     },
 })
 
-export const {logout, setCredentials} = authSlice.actions
+export const {logout, setCredentials, updateCredentials} = authSlice.actions
 export default authSlice.reducer;

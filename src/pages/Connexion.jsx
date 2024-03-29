@@ -11,13 +11,7 @@ function Connexion() {
     const navigate = useNavigate()
     const { register, handleSubmit } = useForm()
 
-    const [input, setInput] = useState({
-        email: "",
-        password: "",
-    });
-
     useEffect(() => {
-        console.log(success)
         if (success) navigate('/profil')
       }, [navigate, success])
 

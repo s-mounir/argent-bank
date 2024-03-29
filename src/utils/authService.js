@@ -4,11 +4,10 @@ export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
     // base url of backend API
-    baseUrl: 'http://localhost:3001/api/v1',
+    baseUrl: process.env.REACT_APP_BASE_URL,
     // prepareHeaders is used to configure the header of every request and gives access to getState which we use to include the token from the store
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.userToken
-      console.log(token)
       if (token) {
        // include token in req header
         headers.set('Authorization', `Bearer ${token}`)  
@@ -26,6 +25,5 @@ export const authApi = createApi({
   }),
 })
 
-// export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
-export const { useGetUserDetailsQuery } = authApi
+
+export const { useGetUserDetailsQuery } = authApi;

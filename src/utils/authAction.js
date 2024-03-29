@@ -4,7 +4,7 @@ export const userLogin = createAsyncThunk(
     'auth/login',
     async ({ email, password }, { rejectWithValue }) => {
         try {
-            const response = await fetch("http://localhost:3001/api/v1/user/login", {
+            const response = await fetch(process.env.REACT_APP_BASE_URL+"/user/login", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
@@ -12,8 +12,6 @@ export const userLogin = createAsyncThunk(
                 body: JSON.stringify({ email, password }),
             });
             const res = await response.json();
-            console.log("API response");
-            console.log(res);
             if (res.status === 200) {
                 localStorage.setItem("userToken", res.body.token);
                 return res;
