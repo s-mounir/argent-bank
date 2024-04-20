@@ -6,7 +6,7 @@ import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { logout } from '../utils/authSlice';
 
 function Header() {
-  const { userFirstName, userLastName } = useSelector((state) => state.auth)
+  const { userFirstName } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
   return (

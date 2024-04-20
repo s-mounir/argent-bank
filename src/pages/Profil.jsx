@@ -9,6 +9,7 @@ import EditName from '../components/EditName';
 function Profil() {
     const { userFirstName, userLastName } = useSelector((state) => state.auth)
     const dispatch = useDispatch()
+    console.log(userFirstName,' : ', userLastName)
 
     // automatically authenticate user if token is found
     const { data, isFetching } = useGetUserDetailsQuery('userDetails', {

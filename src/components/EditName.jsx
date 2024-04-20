@@ -31,8 +31,7 @@ function EditName() {
             if (response.ok) {
                 const data = await response.json();
                 /* Checking that the query response is indeed retrieved */
-                console.log(data) 
-                console.log('firstname : ',firstName)
+                //console.log(data) 
                 dispatch(updateCredentials(data))
                 setDisplay(true);
             } else {
