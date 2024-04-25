@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faRightFromBracket, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 
 import { logout } from '../utils/authSlice';
 
@@ -19,7 +19,10 @@ function Header() {
         />
         <h1 className="sr-only">Argent Bank</h1>
       </NavLink>
-      <div>
+      <div className='main-nav-login'>
+        {userFirstName && (
+          <p>{userFirstName}</p>
+        )}
         {userFirstName ? (
           <NavLink to="./" className="main-nav-item" onClick={() => dispatch(logout())}>
             <FontAwesomeIcon icon={faRightFromBracket} />
@@ -27,7 +30,7 @@ function Header() {
           </NavLink>
         ) : (
           <NavLink to="./login" className="main-nav-item">
-            <i className="fa fa-user-circle"></i>
+            <FontAwesomeIcon icon={faUserCircle} />
             Sign In
           </NavLink>
         )}
